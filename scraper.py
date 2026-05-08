@@ -167,6 +167,10 @@ def is_valid(url):
 			return False
 		if re.search(r"(\d{4})-(\d{2})-(\d{2})", path):
 			return False
+		if re.search(r"/(\d{4})/(\d{2})/(\d{2})", query):
+			return False
+		if re.search(r"(\d{4})-(\d{2})-(\d{2})", query):
+			return False
 		if "calendar" in path:
 			return False
 		if "/people" in path:
