@@ -180,7 +180,7 @@ def is_valid(url):
 
 		return True
 
-	except TypeError:
-		print ("TypeError for ", parsed)
+	except Exception as e:
+		print (f"{type(e)}: {e} for ", parsed)
 		# Peace of mind
 		return False
