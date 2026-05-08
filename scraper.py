@@ -107,14 +107,17 @@ def extract_next_links(url, resp):
 
 	# No validation will be done except for defragging, it will be up to is_valid to filter the URLs
 	for tag in soup.find_all('a', href = True):
-		link = tag["href"]
-		if link == '#':
-			continue
+		try:
+			link = tag["href"]
+			if link == '#':
+				continue
 
-		defragged_url, _ = urldefrag(urljoin(url, link))
-		
-		links.add(defragged_url)
-
+			defragged_url, _ = urldefrag(urljoin(url, link))
+			
+			links.add(defragged_url)
+		except:
+			# Headache reducer
+			pass
 
 	return list(links)
 
